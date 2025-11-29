@@ -3,214 +3,408 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Чайная коллекция</title>
+  <title>Золотые Листья — премиальный чай</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f3ea;
-      --text: #2d241e;
-      --accent: #7c5a3b;
-      --leaf: #6aa35a;
-      --card: #ffffff;
+      --bg: #0d1117;
+      --card: #0f1724;
+      --soft: #182235;
+      --text: #e5ecf4;
+      --muted: #b8c6d9;
+      --accent: #75e6a4;
+      --accent-2: #a6b8ff;
+      --gradient: linear-gradient(135deg, #75e6a4, #a6b8ff);
+      --shadow: 0 18px 60px rgba(0,0,0,0.35);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Raleway', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(117,230,164,0.08), transparent 25%),
+                  radial-gradient(circle at 85% 15%, rgba(166,184,255,0.1), transparent 28%),
+                  #0b0f16;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      min-height: 100vh;
     }
+    a { color: inherit; text-decoration: none; }
     header {
-      background: radial-gradient(circle at 20% 20%, rgba(106,163,90,.25), transparent 35%),
-                  radial-gradient(circle at 80% 0%, rgba(124,90,59,.25), transparent 30%),
-                  linear-gradient(135deg, #f8f2e5, #f0e6d8);
-      padding: 64px 24px 80px;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(13,17,23,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 22px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 10px 14px;
+      border-radius: 14px;
+      transition: background .2s ease, color .2s ease;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    nav a:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+    .cta-btn {
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--gradient);
+      color: #0a0f18;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 40px rgba(117,230,164,0.4); }
+    .hero {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding: 32px 20px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      align-items: center;
+    }
+    .hero-text {
+      background: linear-gradient(145deg, rgba(15,23,36,0.8), rgba(15,23,36,0.5));
+      padding: 26px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+    }
+    h1 { margin: 0 0 12px; font-size: 38px; line-height: 1.2; }
+    .lead { color: var(--muted); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .ghost-btn {
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+      transition: border .2s ease, background .2s ease;
+    }
+    .ghost-btn:hover { border-color: rgba(117,230,164,0.5); background: rgba(117,230,164,0.08); }
+    .hero-visual {
       position: relative;
       overflow: hidden;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(117,230,164,0.1), rgba(166,184,255,0.08));
     }
-    header::after {
-      content: '';
-      position: absolute;
-      inset: 40px 10% auto;
-      height: 320px;
-      background: url('https://images.unsplash.com/photo-1452531380519-3c84ee047f02?auto=format&fit=crop&w=1400&q=80') center/cover;
-      border-radius: 32px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.15);
-      z-index: 0;
-      opacity: 0.28;
-      filter: blur(2px);
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
-    .hero {
-      position: relative;
-      z-index: 1;
-      max-width: 960px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(124,90,59,0.15);
-      border-radius: 28px;
-      padding: 28px 30px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    section { padding: 26px 20px 20px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
     }
-    .hero h1 {
-      margin: 0 0 12px;
-      font-size: 42px;
-      letter-spacing: -0.5px;
-    }
-    .hero p {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 18px;
-      color: #4e3f36;
-    }
+    .section-head h2 { margin: 0; font-size: 28px; }
+    .section-head p { margin: 0; color: var(--muted); }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      padding: 32px 24px 80px;
-      max-width: 1200px;
-      margin: -60px auto 0;
-      position: relative;
-      z-index: 2;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
     }
     .card {
       background: var(--card);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 18px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
       overflow: hidden;
-      border: 1px solid rgba(124,90,59,0.08);
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: transform .2s ease, border .2s ease;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    .card:hover { transform: translateY(-4px); border-color: rgba(117,230,164,0.5); }
+    .card img { width: 100%; height: 190px; object-fit: cover; }
+    .card-body { padding: 16px 16px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .badge { align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: rgba(117,230,164,0.12); color: #d2ffe7; font-weight: 700; font-size: 12px; letter-spacing: 0.4px; }
+    .price { font-weight: 800; color: var(--accent); margin: 0; }
+    .notes { margin: 0; color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { padding: 6px 10px; border-radius: 10px; background: rgba(166,184,255,0.12); color: #e6eaff; font-weight: 600; font-size: 13px; }
+    .shop-actions { display: flex; gap: 10px; margin-top: auto; flex-wrap: wrap; }
+    .shop-btn { flex: 1; text-align: center; padding: 10px 12px; border-radius: 12px; background: var(--gradient); color: #0a0f18; font-weight: 800; border: none; cursor: pointer; box-shadow: var(--shadow); }
+    .outline-btn { flex: 1; text-align: center; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); color: var(--text); background: transparent; font-weight: 800; cursor: pointer; }
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      align-items: start;
     }
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 18px 18px 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .badge {
-      align-self: flex-start;
-      background: linear-gradient(120deg, var(--leaf), #8bcf78);
-      color: #0f2c0f;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.2px;
-      text-transform: uppercase;
-    }
-    h2 {
-      margin: 0;
-      font-size: 24px;
-      letter-spacing: -0.2px;
-    }
-    .price {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .notes {
-      margin: 0;
-      color: #57493f;
-    }
-    .features {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      background: rgba(106,163,90,0.12);
-      color: #244322;
-      border: 1px solid rgba(106,163,90,0.3);
-      padding: 6px 10px;
-      border-radius: 10px;
-      font-size: 13px;
-    }
-    footer {
-      text-align: center;
-      padding: 28px 16px 40px;
-      color: #5c4f46;
-      font-size: 14px;
-    }
-    @media (max-width: 640px) {
-      header { padding: 48px 18px 64px; }
-      .hero h1 { font-size: 32px; }
-      .grid { padding: 24px 18px 64px; margin-top: -40px; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); color: var(--muted); font-weight: 700; }
+    .steps { display: grid; gap: 12px; }
+    .step { padding: 14px; border-radius: 14px; background: var(--soft); border: 1px solid rgba(255,255,255,0.06); }
+    .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .review-card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; box-shadow: var(--shadow); }
+    .review-author { font-weight: 800; margin: 8px 0 0; }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .social-btn { padding: 10px 14px; border-radius: 12px; background: rgba(255,255,255,0.06); color: var(--text); font-weight: 700; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.08); }
+    .footer { text-align: center; padding: 28px 18px 48px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 720px) {
+      h1 { font-size: 30px; }
+      .nav { flex-direction: column; align-items: flex-start; }
+      nav ul { width: 100%; }
+      .hero { padding-top: 12px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="hero">
-      <h1>Чайная коллекция для вдохновения</h1>
-      <p>Подберите чай под настроение: свежий зелёный, ароматный с бергамотом или расслабляющий цветочный. Мы ориентируемся на честные средние цены за 100 грамм и создаём атмосферу, в которой хочется заваривать ещё чашку.</p>
+    <div class="nav">
+      <div class="logo"><span>Золотые Листья</span> | чай, который вдохновляет</div>
+      <nav>
+        <ul>
+          <li><a href="#products">Коллекция</a></li>
+          <li><a href="#brewing">Заваривание</a></li>
+          <li><a href="#brand">О бренде</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="reviews.html">Все отзывы</a></li>
+        </ul>
+      </nav>
+      <button class="cta-btn">В магазин</button>
     </div>
   </header>
 
-  <section class="grid">
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1465326117523-6450112b60b2?auto=format&fit=crop&w=1200&q=80" alt="Зелёный чай в пиале">
-      <div class="card-content">
-        <span class="badge">Зелёный чай</span>
-        <h2>Изумрудная свежесть</h2>
-        <p class="price">≈ 420 ₽ / 100 г</p>
-        <p class="notes">Нежные листочки, обработанные паром, дарят мягкий травянистый вкус с лёгкой сладостью и оттенком жасмина. Пробуждает утро и сохраняет ясность мысли.</p>
-        <div class="features">
-          <span class="tag">Вкус: свежий, травянистый</span>
-          <span class="tag">Заваривание: 80–85°C</span>
-          <span class="tag">Настроение: бодрость</span>
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <p class="pill">Полвека опыта • Лучшие плантации Азии</p>
+      <h1>Современная чайная культура с мягким вкусом и выразительным ароматом</h1>
+      <p class="lead">«Золотые Листья» — премиальный чай, созданный для тех, кто ценит глубину вкуса, чистоту сбора и безупречное качество. Мы подбираем листья вручную, контролируем ферментацию и сохраняем природную энергию каждого сорта.</p>
+      <div class="hero-actions">
+        <button class="cta-btn">Выбрать набор</button>
+        <button class="ghost-btn">Смотреть каталог</button>
+        <div class="socials">
+          <a class="social-btn" href="#">Instagram</a>
+          <a class="social-btn" href="#">Telegram</a>
+          <a class="social-btn" href="#">YouTube</a>
         </div>
       </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1515548212791-1f884c46faf6?auto=format&fit=crop&w=1200&q=80" alt="Чай с бергамотом">
-      <div class="card-content">
-        <span class="badge">Чай с бергамотом</span>
-        <h2>Туманное утро</h2>
-        <p class="price">≈ 520 ₽ / 100 г</p>
-        <p class="notes">Классический чёрный чай с эфирным маслом бергамота раскрывается цитрусовой искрой и согревающей терпкостью. Идеален для неспешных завтраков и мягких бесед.</p>
-        <div class="features">
-          <span class="tag">Вкус: цитрусовый, плотный</span>
-          <span class="tag">Заваривание: 92–95°C</span>
-          <span class="tag">Настроение: уют</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?auto=format&fit=crop&w=1200&q=80" alt="Цветочный чай">
-      <div class="card-content">
-        <span class="badge">Цветочный чай</span>
-        <h2>Сад вечерних огней</h2>
-        <p class="price">≈ 480 ₽ / 100 г</p>
-        <p class="notes">Сбор лепестков жасмина, календулы и василька в купаже с лёгким белым чаем. Цветочные ноты сменяются медовой мягкостью и лёгким ароматом луговых трав.</p>
-        <div class="features">
-          <span class="tag">Вкус: цветочный, мёд</span>
-          <span class="tag">Заваривание: 85–90°C</span>
-          <span class="tag">Настроение: расслабление</span>
-        </div>
-      </div>
-    </article>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1400&q=80" alt="Современная чайная сервировка">
+    </div>
   </section>
 
-  <footer>
-    Вдохните аромат, выберите вкус, заварите момент. Мы подскажем оптимальные температуры заваривания и подберём свежий урожай.
-  </footer>
+  <section id="products">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Коллекция вкусов</h2>
+        <p>Баланс свежести, плотности и цветочных оттенков в каждой чашке.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?auto=format&fit=crop&w=1200&q=80" alt="Зелёный чай в чашке">
+          <div class="card-body">
+            <span class="badge">Зелёный</span>
+            <h3>Изумрудная гармония</h3>
+            <p class="price">≈ 480 ₽ / 100 г</p>
+            <p class="notes">Собранные на высоте листья с утренних склонов дарят сочную травянистую волну, переходящую в сладость дикого жасмина и освежающее послевкусие. SEO-описание: мягкий зелёный чай без горечи, с природным антиоксидантным зарядом, идеален для ежедневного ритуала бодрости.</p>
+            <div class="tags">
+              <span class="tag">Паровая обработка</span>
+              <span class="tag">80–85°C</span>
+              <span class="tag">Витамины группы B</span>
+            </div>
+            <div class="shop-actions">
+              <button class="shop-btn">Добавить в корзину</button>
+              <button class="outline-btn">Подробнее</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1515548212791-1f884c46faf6?auto=format&fit=crop&w=1200&q=80" alt="Чёрный чай с бергамотом">
+          <div class="card-body">
+            <span class="badge">Черный с бергамотом</span>
+            <h3>Туманное утро</h3>
+            <p class="price">≈ 540 ₽ / 100 г</p>
+            <p class="notes">Густой аромат цитрусов с шоколадным фоном раскрывается в горячей воде и создаёт шелковистый настой. SEO-описание: элитный эрл грей с эфирным маслом бергамота, подчёркивает десерты и идеально подходит для вечерних встреч.</p>
+            <div class="tags">
+              <span class="tag">Цитрусовая цедра</span>
+              <span class="tag">92–95°C</span>
+              <span class="tag">Полнотелый вкус</span>
+            </div>
+            <div class="shop-actions">
+              <button class="shop-btn">В корзину</button>
+              <button class="outline-btn">Подарочный набор</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1452531380519-3c84ee047f02?auto=format&fit=crop&w=1200&q=80" alt="Белый чай с цветами">
+          <div class="card-body">
+            <span class="badge">Цветочный белый</span>
+            <h3>Сад вечерних огней</h3>
+            <p class="price">≈ 520 ₽ / 100 г</p>
+            <p class="notes">Воздушный купаж с лепестками жасмина, календулы и василька дарит медовую мягкость и деликатный аромат луговых трав. SEO-описание: нежный цветочный чай для расслабления, успокаивает и подчёркивает естественную сладость десертов.</p>
+            <div class="tags">
+              <span class="tag">85–90°C</span>
+              <span class="tag">Низкая ферментация</span>
+              <span class="tag">Аромат цветов</span>
+            </div>
+            <div class="shop-actions">
+              <button class="shop-btn">Купить</button>
+              <button class="outline-btn">Подробнее</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1200&q=80" alt="Улун">
+          <div class="card-body">
+            <span class="badge">Улун</span>
+            <h3>Облачная долина</h3>
+            <p class="price">≈ 620 ₽ / 100 г</p>
+            <p class="notes">Полуферментированный улун с кремово-ореховым телом и длительным сладким послевкусием. SEO-описание: премиальный улун с мягкими сливочными акцентами, раскрывается несколькими проливами и оставляет бархатное ощущение свежести.</p>
+            <div class="tags">
+              <span class="tag">Гунфу стиль</span>
+              <span class="tag">90–94°C</span>
+              <span class="tag">Сливочный аромат</span>
+            </div>
+            <div class="shop-actions">
+              <button class="shop-btn">В корзину</button>
+              <button class="outline-btn">Сравнить</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="brewing">
+    <div class="section-inner two-col">
+      <div>
+        <div class="section-head">
+          <h2>Современные способы заваривания</h2>
+          <p>Режимы, которые раскрывают вкус без горечи.</p>
+        </div>
+        <p class="lead">Используйте очищенную воду и прогревайте посуду заранее. Мы тестируем каждый сорт, чтобы рекомендовать оптимальные параметры и сделать ваш чай идеально чистым.</p>
+        <div class="steps">
+          <div class="step"><strong>Классический метод.</strong> 3–4 г чая на 250 мл воды 85–95°C, настаивать 2–3 минуты, мягко помешивая. Подходит для ежедневного чаепития и офисных пауз.</div>
+          <div class="step"><strong>Гунфу (проливами).</strong> 5–7 г на гайвань 120 мл, первая проливка 10 секунд, далее увеличиваем на 5–7 секунд; раскрывает многослойность вкуса.</div>
+          <div class="step"><strong>Холодное заваривание.</strong> 6 г чая на 500 мл холодной воды, 6–8 часов в холодильнике; даёт чистый освежающий напиток без горечи.</div>
+          <div class="step"><strong>Латте с бергамотом.</strong> Заварите крепкую основу 95°C, взбейте молоко, соедините 1:1 и добавьте цедру апельсина — получайте десертный чайный коктейль.</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=1200&q=80" alt="Процесс заваривания чая">
+      </div>
+    </div>
+  </section>
+
+  <section id="brand">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>История бренда «Золотые Листья»</h2>
+        <p>Полвека совершенства и внимательности к каждому листу.</p>
+      </div>
+      <div class="card" style="padding:20px;">
+        <p class="lead">Мы начали с маленькой лавки в горах Фуцзянь полвека назад, когда чай был способом объединить семью и друзей за одним столом. С тех пор мы превратили традицию в современную культуру, сохранив уважение к природе и мастерам.</p>
+        <p class="notes">«Золотые Листья» выросли из семейного дела в международный бренд, но сердце осталось прежним: честный вкус, прозрачное происхождение и вдохновение природой. Каждая партия проходит ручной отбор, чтобы в чашку попадали только лучшие листочки. Мы сотрудничаем с фермерами, которые бережно ухаживают за террасами и используют экологичные методы.</p>
+        <p class="notes">Наши технологи тестируют десятки параметров ферментации, чтобы сохранить эфирные масла и природную сладость. Мы создаём купажи, которые подчёркивают региональные особенности и гармонично сочетаются с современными гастрономическими трендами. Полвека назад наш основатель привёз первые ящики чая на велосипеде, а сегодня мы доставляем свежий урожай по всему миру за считанные дни.</p>
+        <p class="notes">Мы инвестируем в устойчивые практики, поддерживаем биоразнообразие и обучаем фермеров новым методам сборки. Наши дизайнеры разрабатывают упаковку, которая сохраняет аромат и выглядит достойно на любой кухне. Мы верим, что чай — это медленный вдох, способ остановить время и почувствовать себя в моменте.</p>
+        <p class="notes">Бренд регулярно получает награды за вкус и экологичность, и мы гордимся каждой чашкой, сваренной из наших листьев. Мы проводим дегустации, обучаем завариванию и делимся знаниями, чтобы вы чувствовали себя экспертом. Наши коллекции обновляются с учётом сезонности, потому что свежесть — основа яркого вкуса.</p>
+        <p class="notes">Мы используем только натуральные ароматические компоненты и избегаем искусственных добавок. Каждая партия проходит лабораторные проверки на чистоту и безопасность. Наши наборы создаются так, чтобы подобрать чай под настроение: бодрящий, расслабляющий или десертный.</p>
+        <p class="notes">Мы вдохновляемся природой и искусством, создавая современные вкусовые палитры. Наша команда путешествует по плантациям, чтобы лично оценить почву, климат и методы ухода. Мы строим долгосрочные отношения с поставщиками и инвестируем в их развитие.</p>
+        <p class="notes">Наши клиенты ценят прозрачность, поэтому мы раскрываем происхождение каждой упаковки. Бренд появился пол века назад и развивался вместе с нашими гостями: от первых дегустаций до онлайн-магазина. Мы создали клуб ценителей, где участники первыми пробуют лимитированные серии.</p>
+        <p class="notes">Мы продолжаем расширять линейку, добавляя матча, улун, пуэр и авторские купажи. Сервис поддержки помогает подобрать идеальную температуру, время заваривания и аксессуары. Мы убеждены, что лучший чай рождается из уважения к земле и вниманию к деталям.</p>
+        <p class="notes">«Золотые Листья» — это история о страсти, любви к вкусу и желании делиться теплом. Мы будем рады заварить с вами следующую чашку.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="section-head">
+        <h2>Отзывы гостей</h2>
+        <p>5 свежих впечатлений, ещё больше — на отдельной странице.</p>
+        <a class="ghost-btn" href="reviews.html">Перейти ко всем отзывам</a>
+      </div>
+      <div class="reviews">
+        <div class="review-card">«Изумрудная гармония» помогает начать день мягко, без лишнего кофеина. Аромат вдохновляет на утреннюю зарядку.<div class="review-author">— Анна, йога-инструктор</div></div>
+        <div class="review-card">Бергамот держит баланс: нет яркой горечи, зато есть благородный цитрус. Нравится, что ферментация прозрачна.<div class="review-author">— Дмитрий, бариста</div></div>
+        <div class="review-card">Улун «Облачная долина» удивил сливочностью. Проливы дают разные оттенки, чувствуешь себя дегустатором.<div class="review-author">— Ольга, фуди-блогер</div></div>
+        <div class="review-card">Цветочный белый идеально подходит для вечернего ритуала. Аромат напоминает лето в горах.<div class="review-author">— Мария, дизайнер</div></div>
+        <div class="review-card">Понравилась упаковка и сервис доставки. Чай свежий, без пыли, заваривание простое даже для новичка.<div class="review-author">— Алексей, предприниматель</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner two-col">
+      <div>
+        <div class="section-head">
+          <h2>Готовы заказать?</h2>
+          <p>Добавьте любимые вкусы или спросите сомелье.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="cta-btn">Собрать корзину</button>
+          <button class="ghost-btn">Связаться с чайным сомелье</button>
+        </div>
+      </div>
+      <div>
+        <div class="section-head">
+          <h2>Мы на связи</h2>
+          <p>Социальные сети и магазин для быстрых заказов.</p>
+        </div>
+        <div class="socials">
+          <a class="social-btn" href="#">Instagram</a>
+          <a class="social-btn" href="#">Telegram</a>
+          <a class="social-btn" href="#">YouTube</a>
+          <a class="social-btn" href="#">Маркетплейс</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">© 2024 «Золотые Листья». Лучший чай по современным правилам вкуса и заботы.</div>
 </body>
 </html>
