@@ -62,6 +62,17 @@ a:hover{ opacity:.92; }
   border: 1px solid #dbcab9;
 }
 
+.menu-toggle{
+  display:none;
+  border:1px solid #dbcab9;
+  background:linear-gradient(180deg, #fff, #f8f2eb);
+  color:var(--text);
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
 .nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;}
 
 .nav a{font-size:13px;color:var(--muted);padding:0;border-radius:0;border:none;white-space:nowrap;}
@@ -145,14 +156,26 @@ details.accordion > *:not(summary){padding:14px 16px 16px;}
 .prompt-pro-card h3{margin:0 0 10px;}
 .prompt-pro-card p{margin:0 0 10px;}
 @media (max-width: 900px){
-  .nav-wrap{align-items:flex-start;}
+  .nav-wrap{align-items:center;flex-wrap:wrap;}
+  .menu-toggle{display:inline-flex;}
   .nav{
+    display:none;
+    flex-direction:column;
+    gap:8px;
     justify-content:flex-start;
     flex-wrap:nowrap;
-    overflow-x:auto;
     width:100%;
-    padding-bottom:4px;
-    scrollbar-width:thin;
+    margin-top:6px;
+    padding:10px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff;
+  }
+  .nav.open{
+    display:flex;
+  }
+  .nav a{
+    padding:8px 0;
   }
   .prompt-pro-grid{grid-template-columns:1fr;}
 }

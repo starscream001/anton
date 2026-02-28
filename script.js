@@ -8,6 +8,22 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = `${progress}%`;
 });
 
+
+// Mobile menu
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle?.addEventListener('click', () => {
+  const isOpen = mainNav?.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+
+mainNav?.addEventListener('click', (e) => {
+  if (!e.target.closest('a') || window.innerWidth > 900) return;
+  mainNav.classList.remove('open');
+  menuToggle?.setAttribute('aria-expanded', 'false');
+});
+
 // Copy helpers
 async function copyText(text) {
   try {
