@@ -96,3 +96,69 @@ downloadBtn?.addEventListener('click', () => {
   }
   window.open(url, '_blank', 'noopener,noreferrer');
 });
+
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  const money = (n) => {
+    if (!isFinite(n)) return "—";
+    return Math.round(n).toLocaleString("ru-RU") + " ₽";
+  };
+  const pct = (n) => (isFinite(n) ? (n * 100).toFixed(1) + "%" : "—");
+
+  function calc() {
+    const checks = +$("c_checks")?.value || 0;
+    const avg = +$("c_avg")?.value || 0;
+    const days = +$("c_days")?.value || 30;
+
+    const cogs = (+$("c_cogs")?.value || 0) / 100;
+    const acq = (+$("c_acq")?.value || 0) / 100;
+    const del = (+$("c_del")?.value || 0) / 100;
+    const taxRate = (+$("c_tax")?.value || 0) / 100;
+
+    const payroll = +$("c_payroll")?.value || 0;
+    const rent = +$("c_rent")?.value || 0;
+    const utils = +$("c_utils")?.value || 0;
+    const mkt = +$("c_mkt")?.value || 0;
+    const other = +$("c_other")?.value || 0;
+
+    const revDay = checks * avg;
+    const revMonth = revDay * days;
+
+    const varRate = cogs + acq + del;
+    const varCost = revMonth * varRate;
+    const gross = revMonth - varCost;
+
+    const fixed = payroll + rent + utils + mkt + other;
+    const op = gross - fixed;
+
+    const tax = revMonth * taxRate;
+    const net = op - tax;
+
+    const cm = 1 - varRate;
+    const beRev = cm > 0 ? fixed / cm : Infinity;
+    const beChecksDay = (beRev / days) / (avg || 1);
+
+    $("o_rev_m").textContent = money(revMonth);
+    $("o_rev_d").textContent = money(revDay);
+    $("o_var").textContent = money(varCost);
+    $("o_gross").textContent = money(gross);
+    $("o_fixed").textContent = money(fixed);
+    $("o_op").textContent = money(op);
+    $("o_tax").textContent = money(tax);
+    $("o_net").textContent = money(net);
+    $("o_cm").textContent = pct(cm);
+    $("o_be_checks").textContent = isFinite(beChecksDay) ? Math.ceil(beChecksDay) + " чек/день" : "—";
+  }
+
+  const btn = $("calcBtn");
+  if (btn) btn.addEventListener("click", calc);
+
+  const reset = $("calcReset");
+  if (reset) reset.addEventListener("click", () => location.reload());
+
+  ["c_checks","c_avg","c_days","c_cogs","c_acq","c_del","c_payroll","c_rent","c_utils","c_mkt","c_other","c_tax"]
+    .forEach(id => $(id)?.addEventListener("input", () => calc()));
+
+  if ($("calcBtn")) calc();
+})();
