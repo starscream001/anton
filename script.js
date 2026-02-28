@@ -1,52 +1,98 @@
-const copyButtons = document.querySelectorAll('.copy-btn');
-
-function getTextFromTarget(selector) {
-  const node = document.querySelector(selector);
-  return node ? node.innerText.trim() : '';
-}
-
-copyButtons.forEach((button) => {
-  button.addEventListener('click', async () => {
-    const explicit = button.dataset.copy;
-    const target = button.dataset.copyTarget;
-    const fallback = button.parentElement?.querySelector('.copy-block')?.innerText?.trim() || '';
-    const text = explicit || (target ? getTextFromTarget(target) : fallback);
-
-    if (!text) return;
-
-    try {
-      await navigator.clipboard.writeText(text);
-      const previous = button.textContent;
-      button.textContent = 'Скопировано ✓';
-      button.classList.add('copied');
-      setTimeout(() => {
-        button.textContent = previous;
-        button.classList.remove('copied');
-      }, 1400);
-    } catch (error) {
-      console.error('Ошибка копирования:', error);
-    }
-  });
-});
-
+// Progress bar
 const progressBar = document.getElementById('progressBar');
 window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  const doc = document.documentElement;
+  const scrollTop = doc.scrollTop || document.body.scrollTop;
+  const scrollHeight = doc.scrollHeight - doc.clientHeight;
+  const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
   progressBar.style.width = `${progress}%`;
 });
 
-const zipLinkInput = document.getElementById('zipLink');
+// Copy helpers
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    // Fallback (older iOS)
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  }
+}
+
+function toast(btn, ok) {
+  const old = btn.textContent;
+  btn.textContent = ok ? 'Скопировано ✅' : 'Не получилось';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = old;
+    btn.disabled = false;
+  }, 900);
+}
+
+// Copy buttons
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+
+  const direct = btn.getAttribute('data-copy');
+  const targetSel = btn.getAttribute('data-copy-target');
+
+  if (direct) {
+    const ok = await copyText(direct);
+    toast(btn, ok);
+    return;
+  }
+
+  if (targetSel) {
+    const node = document.querySelector(targetSel);
+    if (!node) return toast(btn, false);
+
+    // collect all .copy-block inside target OR all text inside target
+    const blocks = node.querySelectorAll('.copy-block');
+    let text = '';
+    if (blocks.length) {
+      text = Array.from(blocks).map(n => n.textContent.trim()).join('\n\n');
+    } else {
+      text = node.textContent.trim();
+    }
+    const ok = await copyText(text);
+    toast(btn, ok);
+  }
+});
+
+// Download link activator
+const zipLink = document.getElementById('zipLink');
 const downloadBtn = document.getElementById('downloadBtn');
 
-if (zipLinkInput && downloadBtn) {
-  downloadBtn.addEventListener('click', () => {
-    const link = zipLinkInput.value.trim();
-    if (!link) {
-      alert('Пока это заглушка: вставьте ссылку на ZIP в поле выше.');
-      return;
-    }
-    window.open(link, '_blank', 'noopener,noreferrer');
-  });
+function setDownloadState() {
+  const url = (zipLink?.value || '').trim();
+  const ok = /^https?:\/\/.+/i.test(url);
+  if (ok) {
+    downloadBtn.classList.add('ready');
+    downloadBtn.textContent = 'Скачать пакет';
+  } else {
+    downloadBtn.classList.remove('ready');
+    downloadBtn.textContent = 'Скачать пакет (заглушка)';
+  }
 }
+
+zipLink?.addEventListener('input', setDownloadState);
+setDownloadState();
+
+downloadBtn?.addEventListener('click', () => {
+  const url = (zipLink?.value || '').trim();
+  if (!/^https?:\/\/.+/i.test(url)) {
+    alert('Вставьте ссылку на ZIP (начинается с http/https).');
+    return;
+  }
+  window.open(url, '_blank', 'noopener,noreferrer');
+});
