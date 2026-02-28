@@ -30,12 +30,12 @@ async function copyText(text) {
 
 function toast(btn, ok) {
   const old = btn.textContent;
-  btn.textContent = ok ? 'Скопировано ✅' : 'Не получилось';
+  btn.textContent = ok ? 'Скопировано' : 'Не получилось';
   btn.disabled = true;
   setTimeout(() => {
     btn.textContent = old;
     btn.disabled = false;
-  }, 900);
+  }, 1200);
 }
 
 // Copy buttons
