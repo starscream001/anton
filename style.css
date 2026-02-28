@@ -135,6 +135,12 @@ details.accordion > *:not(summary){padding:14px 16px 16px;}
 .to-top:hover{ background:#faf5ef; }
 
 .section-lead{margin:0 0 14px;color:var(--muted);max-width:860px;}
+.card ul,
+.card ol{margin:0 0 10px;padding-left:20px;line-height:1.65;color:#3f3832;}
+.card li{margin:6px 0;}
+
+#team .card{background:linear-gradient(180deg,#fff,#fefbf7);}
+#team .accordion .card{box-shadow:none;border-color:#eadfce;}
 .prompt-pro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
 .prompt-pro-card h3{margin:0 0 10px;}
 .prompt-pro-card p{margin:0 0 10px;}
