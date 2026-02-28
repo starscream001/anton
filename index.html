@@ -3,410 +3,257 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Золотые Листья — премиальный чай</title>
+  <title>План роста кофейни на 30 дней — Всеволожск</title>
+  <meta name="description" content="Готовый 30-дневный план роста для маленькой кофейни во Всеволожске: акции, апселл, VK-план, отзывы, KPI и AI-промпты." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card: #0f1724;
-      --soft: #182235;
-      --text: #e5ecf4;
-      --muted: #b8c6d9;
-      --accent: #75e6a4;
-      --accent-2: #a6b8ff;
-      --gradient: linear-gradient(135deg, #75e6a4, #a6b8ff);
-      --shadow: 0 18px 60px rgba(0,0,0,0.35);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 10% 20%, rgba(117,230,164,0.08), transparent 25%),
-                  radial-gradient(circle at 85% 15%, rgba(166,184,255,0.1), transparent 28%),
-                  #0b0f16;
-      color: var(--text);
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-    a { color: inherit; text-decoration: none; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(14px);
-      background: rgba(13,17,23,0.9);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 20px;
-      gap: 16px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    .logo span {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      color: transparent;
-      font-size: 22px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    nav a {
-      padding: 10px 14px;
-      border-radius: 14px;
-      transition: background .2s ease, color .2s ease;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    nav a:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-    .cta-btn {
-      padding: 12px 18px;
-      border-radius: 14px;
-      border: none;
-      font-weight: 700;
-      cursor: pointer;
-      background: var(--gradient);
-      color: #0a0f18;
-      box-shadow: var(--shadow);
-      transition: transform .2s ease, box-shadow .2s ease;
-      white-space: nowrap;
-    }
-    .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 40px rgba(117,230,164,0.4); }
-    .hero {
-      max-width: 1200px;
-      margin: 32px auto 0;
-      padding: 32px 20px 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-      align-items: center;
-    }
-    .hero-text {
-      background: linear-gradient(145deg, rgba(15,23,36,0.8), rgba(15,23,36,0.5));
-      padding: 26px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: var(--shadow);
-    }
-    h1 { margin: 0 0 12px; font-size: 38px; line-height: 1.2; }
-    .lead { color: var(--muted); font-size: 18px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-    .ghost-btn {
-      padding: 12px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-weight: 700;
-      cursor: pointer;
-      transition: border .2s ease, background .2s ease;
-    }
-    .ghost-btn:hover { border-color: rgba(117,230,164,0.5); background: rgba(117,230,164,0.08); }
-    .hero-visual {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(180deg, rgba(117,230,164,0.1), rgba(166,184,255,0.08));
-    }
-    .hero-visual img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-    section { padding: 26px 20px 20px; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    .section-head h2 { margin: 0; font-size: 28px; }
-    .section-head p { margin: 0; color: var(--muted); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      transition: transform .2s ease, border .2s ease;
-    }
-    .card:hover { transform: translateY(-4px); border-color: rgba(117,230,164,0.5); }
-    .card img { width: 100%; height: 190px; object-fit: cover; }
-    .card-body { padding: 16px 16px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-    .badge { align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: rgba(117,230,164,0.12); color: #d2ffe7; font-weight: 700; font-size: 12px; letter-spacing: 0.4px; }
-    .price { font-weight: 800; color: var(--accent); margin: 0; }
-    .notes { margin: 0; color: var(--muted); }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { padding: 6px 10px; border-radius: 10px; background: rgba(166,184,255,0.12); color: #e6eaff; font-weight: 600; font-size: 13px; }
-    .shop-actions { display: flex; gap: 10px; margin-top: auto; flex-wrap: wrap; }
-    .shop-btn { flex: 1; text-align: center; padding: 10px 12px; border-radius: 12px; background: var(--gradient); color: #0a0f18; font-weight: 800; border: none; cursor: pointer; box-shadow: var(--shadow); }
-    .outline-btn { flex: 1; text-align: center; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); color: var(--text); background: transparent; font-weight: 800; cursor: pointer; }
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-      align-items: start;
-    }
-    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); color: var(--muted); font-weight: 700; }
-    .steps { display: grid; gap: 12px; }
-    .step { padding: 14px; border-radius: 14px; background: var(--soft); border: 1px solid rgba(255,255,255,0.06); }
-    .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-    .review-card { background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; box-shadow: var(--shadow); }
-    .review-author { font-weight: 800; margin: 8px 0 0; }
-    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
-    .social-btn { padding: 10px 14px; border-radius: 12px; background: rgba(255,255,255,0.06); color: var(--text); font-weight: 700; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.08); }
-    .footer { text-align: center; padding: 28px 18px 48px; color: var(--muted); font-size: 14px; }
-    @media (max-width: 720px) {
-      h1 { font-size: 30px; }
-      .nav { flex-direction: column; align-items: flex-start; }
-      nav ul { width: 100%; }
-      .hero { padding-top: 12px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="logo"><span>Золотые Листья</span> | чай, который вдохновляет</div>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#top">☕ PRO План роста</a>
       <nav>
         <ul>
-          <li><a href="#products">Коллекция</a></li>
-          <li><a href="#brewing">Заваривание</a></li>
-          <li><a href="#brand">О бренде</a></li>
-          <li><a href="#reviews">Отзывы</a></li>
-          <li><a href="reviews.html">Все отзывы</a></li>
+          <li><a href="#goals">Цели</a></li>
+          <li><a href="#promos">Акции</a></li>
+          <li><a href="#vk">VK</a></li>
+          <li><a href="#kpi">KPI</a></li>
+          <li><a href="#download">Скачать пакет</a></li>
         </ul>
       </nav>
-      <button class="cta-btn">В магазин</button>
     </div>
   </header>
 
-  <section class="hero" id="top">
-    <div class="hero-text">
-      <p class="pill">Полвека опыта • Лучшие плантации Азии</p>
-      <h1>Современная чайная культура с мягким вкусом и выразительным ароматом</h1>
-      <p class="lead">«Золотые Листья» — премиальный чай, созданный для тех, кто ценит глубину вкуса, чистоту сбора и безупречное качество. Мы подбираем листья вручную, контролируем ферментацию и сохраняем природную энергию каждого сорта.</p>
-      <div class="hero-actions">
-        <button class="cta-btn">Выбрать набор</button>
-        <button class="ghost-btn">Смотреть каталог</button>
-        <div class="socials">
-          <a class="social-btn" href="#">Instagram</a>
-          <a class="social-btn" href="#">Telegram</a>
-          <a class="social-btn" href="#">YouTube</a>
-        </div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1400&q=80" alt="Современная чайная сервировка">
-    </div>
-  </section>
-
-  <section id="products">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Коллекция вкусов</h2>
-        <p>Баланс свежести, плотности и цветочных оттенков в каждой чашке.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1507915135761-41a0a222c709?auto=format&fit=crop&w=1200&q=80" alt="Зелёный чай в чашке">
-          <div class="card-body">
-            <span class="badge">Зелёный</span>
-            <h3>Изумрудная гармония</h3>
-            <p class="price">≈ 480 ₽ / 100 г</p>
-            <p class="notes">Собранные на высоте листья с утренних склонов дарят сочную травянистую волну, переходящую в сладость дикого жасмина и освежающее послевкусие. SEO-описание: мягкий зелёный чай без горечи, с природным антиоксидантным зарядом, идеален для ежедневного ритуала бодрости.</p>
-            <div class="tags">
-              <span class="tag">Паровая обработка</span>
-              <span class="tag">80–85°C</span>
-              <span class="tag">Витамины группы B</span>
-            </div>
-            <div class="shop-actions">
-              <button class="shop-btn">Добавить в корзину</button>
-              <button class="outline-btn">Подробнее</button>
-            </div>
-          </div>
+  <main id="top">
+    <section class="hero container">
+      <p class="label">Город: Всеволожск (~100k) • 2 точки: основная + банный комплекс</p>
+      <h1>План роста кофейни на 30 дней</h1>
+      <p class="lead">Практичный мини-сайт для собственника: увеличиваем средний чек, возвращаем гостей чаще и системно оживляем VK без перегруза команды.</p>
+      <div class="hero-stats">
+        <article>
+          <h3>Текущая база</h3>
+          <p>Средний чек: <strong>~300 ₽</strong><br>Формат: <strong>3 столика</strong><br>Постоянники есть, лояльность несистемная</p>
         </article>
-
-        <iframe src="https://vkvideo.ru/video_ext.php?oid=-22560541&id=456239102&hash=5a3fcf2a0dadc03e" width="640" height="360" frameborder="0" allowfullscreen="1" style="background-color: #000" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1515548212791-1f884c46faf6?auto=format&fit=crop&w=1200&q=80" alt="Чёрный чай с бергамотом">
-          <div class="card-body">
-            <span class="badge">Черный с бергамотом</span>
-            <h3>Туманное утро</h3>
-            <p class="price">≈ 540 ₽ / 100 г</p>
-            <p class="notes">Густой аромат цитрусов с шоколадным фоном раскрывается в горячей воде и создаёт шелковистый настой. SEO-описание: элитный эрл грей с эфирным маслом бергамота, подчёркивает десерты и идеально подходит для вечерних встреч.</p>
-            <div class="tags">
-              <span class="tag">Цитрусовая цедра</span>
-              <span class="tag">92–95°C</span>
-              <span class="tag">Полнотелый вкус</span>
-            </div>
-            <div class="shop-actions">
-              <button class="shop-btn">В корзину</button>
-              <button class="outline-btn">Подарочный набор</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1452531380519-3c84ee047f02?auto=format&fit=crop&w=1200&q=80" alt="Белый чай с цветами">
-          <div class="card-body">
-            <span class="badge">Цветочный белый</span>
-            <h3>Сад вечерних огней</h3>
-            <p class="price">≈ 520 ₽ / 100 г</p>
-            <p class="notes">Воздушный купаж с лепестками жасмина, календулы и василька дарит медовую мягкость и деликатный аромат луговых трав. SEO-описание: нежный цветочный чай для расслабления, успокаивает и подчёркивает естественную сладость десертов.</p>
-            <div class="tags">
-              <span class="tag">85–90°C</span>
-              <span class="tag">Низкая ферментация</span>
-              <span class="tag">Аромат цветов</span>
-            </div>
-            <div class="shop-actions">
-              <button class="shop-btn">Купить</button>
-              <button class="outline-btn">Подробнее</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=1200&q=80" alt="Улун">
-          <div class="card-body">
-            <span class="badge">Улун</span>
-            <h3>Облачная долина</h3>
-            <p class="price">≈ 620 ₽ / 100 г</p>
-            <p class="notes">Полуферментированный улун с кремово-ореховым телом и длительным сладким послевкусием. SEO-описание: премиальный улун с мягкими сливочными акцентами, раскрывается несколькими проливами и оставляет бархатное ощущение свежести.</p>
-            <div class="tags">
-              <span class="tag">Гунфу стиль</span>
-              <span class="tag">90–94°C</span>
-              <span class="tag">Сливочный аромат</span>
-            </div>
-            <div class="shop-actions">
-              <button class="shop-btn">В корзину</button>
-              <button class="outline-btn">Сравнить</button>
-            </div>
-          </div>
+        <article>
+          <h3>Цель на 30 дней</h3>
+          <p>Поднять средний чек до <strong>340–360 ₽</strong><br>Рост повторных визитов на <strong>+15%</strong><br>VK: <strong>3 поста в неделю</strong></p>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="brewing">
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-head">
-          <h2>Современные способы заваривания</h2>
-          <p>Режимы, которые раскрывают вкус без горечи.</p>
-        </div>
-        <p class="lead">Используйте очищенную воду и прогревайте посуду заранее. Мы тестируем каждый сорт, чтобы рекомендовать оптимальные параметры и сделать ваш чай идеально чистым.</p>
-        <div class="steps">
-          <div class="step"><strong>Классический метод.</strong> 3–4 г чая на 250 мл воды 85–95°C, настаивать 2–3 минуты, мягко помешивая. Подходит для ежедневного чаепития и офисных пауз.</div>
-          <div class="step"><strong>Гунфу (проливами).</strong> 5–7 г на гайвань 120 мл, первая проливка 10 секунд, далее увеличиваем на 5–7 секунд; раскрывает многослойность вкуса.</div>
-          <div class="step"><strong>Холодное заваривание.</strong> 6 г чая на 500 мл холодной воды, 6–8 часов в холодильнике; даёт чистый освежающий напиток без горечи.</div>
-          <div class="step"><strong>Латте с бергамотом.</strong> Заварите крепкую основу 95°C, взбейте молоко, соедините 1:1 и добавьте цедру апельсина — получайте десертный чайный коктейль.</div>
+    <section class="container" id="goals">
+      <div class="section-title">
+        <h2>1) Стратегия роста и расчёт целей</h2>
+      </div>
+      <div class="card">
+        <p><strong>Модель:</strong> работаем сразу по трём рычагам — средний чек, повторные визиты и входящий поток из VK.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Метрика</th>
+                <th>Сейчас</th>
+                <th>Через 30 дней</th>
+                <th>Как достигаем</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Средний чек</td>
+                <td>300 ₽</td>
+                <td>340–360 ₽</td>
+                <td>Апселл-скрипты + комбо</td>
+              </tr>
+              <tr>
+                <td>Повторные визиты</td>
+                <td>база постоянников</td>
+                <td>+15%</td>
+                <td>Программа «6-й кофе в подарок»</td>
+              </tr>
+              <tr>
+                <td>Активность VK</td>
+                <td>нерегулярно</td>
+                <td>12 постов/месяц</td>
+                <td>Контент-план + готовые тексты</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="hero-visual">
-        <img src="https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=1200&q=80" alt="Процесс заваривания чая">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="brand">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>История бренда «Золотые Листья»</h2>
-        <p>Полвека совершенства и внимательности к каждому листу.</p>
+    <section class="container" id="promos">
+      <div class="section-title"><h2>2) 4 акции месяца (с внедрением)</h2></div>
+      <div class="grid-2">
+        <article class="card promo">
+          <h3>Неделя 1: «Комбо-старт»</h3>
+          <p>Кофе + мини-десерт по специальной цене до 12:00.</p>
+          <ol>
+            <li>Выделить 2 комбо-пары на баре и в VK.</li>
+            <li>Внести скрипт предложения в первые 5 секунд диалога.</li>
+            <li>Считать долю комбо от всех чеков.</li>
+          </ol>
+        </article>
+        <article class="card promo">
+          <h3>Неделя 2: «Приведи друга»</h3>
+          <p>Гость приводит нового человека — оба получают топпинг/сироп бесплатно.</p>
+          <ol>
+            <li>Печатный мини-флаер на стойке.</li>
+            <li>Пост + сторис с простыми условиями.</li>
+            <li>Отмечать в KPI количество пар.</li>
+          </ol>
+        </article>
+        <article class="card promo">
+          <h3>Неделя 3: «6-й кофе в подарок»</h3>
+          <p>Физическая карта лояльности вместо хаотичных скидок постоянникам.</p>
+          <ol>
+            <li>Отменить ручные «-10%» и перевести в систему.</li>
+            <li>Штамп/подпись на каждый напиток.</li>
+            <li>Еженедельно считать активные карты.</li>
+          </ol>
+        </article>
+        <article class="card promo">
+          <h3>Неделя 4: «Локальный хит»</h3>
+          <p>Напиток месяца с локальным названием «Всеволожский раф».</p>
+          <ol>
+            <li>Сделать отдельную карточку на кассе.</li>
+            <li>Снять короткое видео приготовления для VK.</li>
+            <li>Считать продажи хита отдельно.</li>
+          </ol>
+        </article>
       </div>
-      <div class="card" style="padding:20px;">
-        <p class="lead">Мы начали с маленькой лавки в горах Фуцзянь полвека назад, когда чай был способом объединить семью и друзей за одним столом. С тех пор мы превратили традицию в современную культуру, сохранив уважение к природе и мастерам.</p>
-        <p class="notes">«Золотые Листья» выросли из семейного дела в международный бренд, но сердце осталось прежним: честный вкус, прозрачное происхождение и вдохновение природой. Каждая партия проходит ручной отбор, чтобы в чашку попадали только лучшие листочки. Мы сотрудничаем с фермерами, которые бережно ухаживают за террасами и используют экологичные методы.</p>
-        <p class="notes">Наши технологи тестируют десятки параметров ферментации, чтобы сохранить эфирные масла и природную сладость. Мы создаём купажи, которые подчёркивают региональные особенности и гармонично сочетаются с современными гастрономическими трендами. Полвека назад наш основатель привёз первые ящики чая на велосипеде, а сегодня мы доставляем свежий урожай по всему миру за считанные дни.</p>
-        <p class="notes">Мы инвестируем в устойчивые практики, поддерживаем биоразнообразие и обучаем фермеров новым методам сборки. Наши дизайнеры разрабатывают упаковку, которая сохраняет аромат и выглядит достойно на любой кухне. Мы верим, что чай — это медленный вдох, способ остановить время и почувствовать себя в моменте.</p>
-        <p class="notes">Бренд регулярно получает награды за вкус и экологичность, и мы гордимся каждой чашкой, сваренной из наших листьев. Мы проводим дегустации, обучаем завариванию и делимся знаниями, чтобы вы чувствовали себя экспертом. Наши коллекции обновляются с учётом сезонности, потому что свежесть — основа яркого вкуса.</p>
-        <p class="notes">Мы используем только натуральные ароматические компоненты и избегаем искусственных добавок. Каждая партия проходит лабораторные проверки на чистоту и безопасность. Наши наборы создаются так, чтобы подобрать чай под настроение: бодрящий, расслабляющий или десертный.</p>
-        <p class="notes">Мы вдохновляемся природой и искусством, создавая современные вкусовые палитры. Наша команда путешествует по плантациям, чтобы лично оценить почву, климат и методы ухода. Мы строим долгосрочные отношения с поставщиками и инвестируем в их развитие.</p>
-        <p class="notes">Наши клиенты ценят прозрачность, поэтому мы раскрываем происхождение каждой упаковки. Бренд появился пол века назад и развивался вместе с нашими гостями: от первых дегустаций до онлайн-магазина. Мы создали клуб ценителей, где участники первыми пробуют лимитированные серии.</p>
-        <p class="notes">Мы продолжаем расширять линейку, добавляя матча, улун, пуэр и авторские купажи. Сервис поддержки помогает подобрать идеальную температуру, время заваривания и аксессуары. Мы убеждены, что лучший чай рождается из уважения к земле и вниманию к деталям.</p>
-        <p class="notes">«Золотые Листья» — это история о страсти, любви к вкусу и желании делиться теплом. Мы будем рады заварить с вами следующую чашку.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="reviews">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Отзывы гостей</h2>
-        <p>5 свежих впечатлений, ещё больше — на отдельной странице.</p>
-        <a class="ghost-btn" href="reviews.html">Перейти ко всем отзывам</a>
+    <section class="container" id="upsell">
+      <div class="section-title"><h2>3) Средний чек: скрипты бариста и чек‑лист апселла</h2></div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Скрипты (коротко)</h3>
+          <ul>
+            <li><strong>База:</strong> «К вашему латте добавить мини‑круассан? Сегодня свежие».</li>
+            <li><strong>Размер:</strong> «Сделать большой объём? Разница всего 40 ₽».</li>
+            <li><strong>Доп:</strong> «Добавим сироп солёная карамель? Он хорошо сочетается».</li>
+          </ul>
+        </article>
+        <article class="card checklist">
+          <h3>Чек‑лист смены (печатный)</h3>
+          <label><input type="checkbox"> Предложен десерт к каждому 2-му чеку</label>
+          <label><input type="checkbox"> Озвучен большой размер минимум 70% гостей</label>
+          <label><input type="checkbox"> Упомянут напиток недели</label>
+          <label><input type="checkbox"> Предложена карта «6-й кофе»</label>
+        </article>
       </div>
-      <div class="reviews">
-        <div class="review-card">«Изумрудная гармония» помогает начать день мягко, без лишнего кофеина. Аромат вдохновляет на утреннюю зарядку.<div class="review-author">— Анна, йога-инструктор</div></div>
-        <div class="review-card">Бергамот держит баланс: нет яркой горечи, зато есть благородный цитрус. Нравится, что ферментация прозрачна.<div class="review-author">— Дмитрий, бариста</div></div>
-        <div class="review-card">Улун «Облачная долина» удивил сливочностью. Проливы дают разные оттенки, чувствуешь себя дегустатором.<div class="review-author">— Ольга, фуди-блогер</div></div>
-        <div class="review-card">Цветочный белый идеально подходит для вечернего ритуала. Аромат напоминает лето в горах.<div class="review-author">— Мария, дизайнер</div></div>
-        <div class="review-card">Понравилась упаковка и сервис доставки. Чай свежий, без пыли, заваривание простое даже для новичка.<div class="review-author">— Алексей, предприниматель</div></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section>
-    <div class="section-inner two-col">
-      <div>
-        <div class="section-head">
-          <h2>Готовы заказать?</h2>
-          <p>Добавьте любимые вкусы или спросите сомелье.</p>
-        </div>
-        <div class="hero-actions">
-          <button class="cta-btn">Собрать корзину</button>
-          <button class="ghost-btn">Связаться с чайным сомелье</button>
-        </div>
-      </div>
-      <div>
-        <div class="section-head">
-          <h2>Мы на связи</h2>
-          <p>Социальные сети и магазин для быстрых заказов.</p>
-        </div>
-        <div class="socials">
-          <a class="social-btn" href="#">Instagram</a>
-          <a class="social-btn" href="#">Telegram</a>
-          <a class="social-btn" href="#">YouTube</a>
-          <a class="social-btn" href="#">Маркетплейс</a>
+    <section class="container" id="vk">
+      <div class="section-title"><h2>4) VK план: 3 поста в неделю + готовые тексты</h2></div>
+      <div class="card">
+        <p><strong>Ритм:</strong> Пн — продукт, Ср — закулисье, Пт — оффер/акция.</p>
+        <div class="grid-3 posts">
+          <article>
+            <h4>Пост #1 (продукт)</h4>
+            <p>«Напиток недели — Всеволожский раф ☕ Нежный вкус, карамельные ноты и идеальная пара к утру. Заходите до 12:00 — действует комбо с десертом.»</p>
+          </article>
+          <article>
+            <h4>Пост #2 (доверие)</h4>
+            <p>«Как мы готовим эспрессо: свежее зерно, точный помол и контроль экстракции в каждой чашке. Покажем процесс в сторис сегодня вечером.»</p>
+          </article>
+          <article>
+            <h4>Пост #3 (оффер)</h4>
+            <p>«Стартуем карту лояльности: каждый 6-й кофе — в подарок. Забрать карту можно прямо на баре, оформление 15 секунд.»</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="footer">© 2024 «Золотые Листья». Лучший чай по современным правилам вкуса и заботы.</div>
+    <section class="container" id="reviews">
+      <div class="section-title"><h2>5) Отзывы: регламент и шаблоны ответов</h2></div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Регламент</h3>
+          <ul>
+            <li>Проверка отзывов 2 раза в день (12:00 и 20:00).</li>
+            <li>Ответ в течение 24 часов.</li>
+            <li>Любой негатив = приглашение в личный диалог + компенсация.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Шаблоны ответов</h3>
+          <p><strong>Позитив:</strong> «Спасибо, что зашли! Очень рады, что вам понравилось. Будем ждать снова — на этой неделе у нас новый авторский раф.»</p>
+          <p><strong>Негатив:</strong> «Спасибо за обратную связь. Нам жаль, что визит оставил такое впечатление. Напишите, пожалуйста, в сообщения сообщества — исправим ситуацию и предложим комплимент от кофейни.»</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="banya">
+      <div class="section-title"><h2>6) Точка в банном комплексе: отдельная стратегия</h2></div>
+      <div class="card">
+        <div class="grid-3">
+          <article>
+            <h4>Оффер</h4>
+            <p>Тёплые напитки после парения + изотоники/вода в удобном формате.</p>
+          </article>
+          <article>
+            <h4>Меню</h4>
+            <p>Сокращённое: 6 позиций (раф, американо, травяной чай, морс, вода, батончик).</p>
+          </article>
+          <article>
+            <h4>Комбо</h4>
+            <p>«После бани»: чай + мёд + батончик. «Компания»: 2 напитка + снеки.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="kpi">
+      <div class="section-title"><h2>7) KPI-трекер: что фиксировать ежедневно</h2></div>
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Дата</th>
+              <th>Выручка</th>
+              <th>Кол-во чеков</th>
+              <th>Средний чек</th>
+              <th>Комбо/допы</th>
+              <th>Новые карты лояльности</th>
+              <th>Повторные гости</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>__ / __</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+            <tr><td>__ / __</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+            <tr><td>__ / __</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="container" id="ai-prompts">
+      <div class="section-title"><h2>8) AI‑промпты для задач кофейни</h2></div>
+      <div class="card prompts">
+        <p><code>Сделай 10 идей постов VK для кофейни во Всеволожске с упором на локальность и акции недели.</code></p>
+        <p><code>Напиши 5 дружелюбных скриптов апселла для бариста, чтобы увеличить средний чек с 300 до 350 ₽.</code></p>
+        <p><code>Сформируй недельный план сторис для кофейни: 7 коротких сценариев, каждый до 15 секунд.</code></p>
+        <p><code>Сделай шаблон ответа на негативный отзыв в VK: спокойно, по делу, с приглашением в личные сообщения.</code></p>
+      </div>
+    </section>
+
+    <section class="container" id="download">
+      <div class="download">
+        <h2>Скачать пакет внедрения</h2>
+        <p>Скоро здесь будет ZIP с шаблонами таблиц, карточками акций, макетами VK-постов и чек‑листами для печати.</p>
+        <button type="button" disabled>Скачать пакет (скоро)</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>PRO «План роста кофейни на 30 дней» • Готово для GitHub Pages</p>
+    </div>
+  </footer>
 </body>
 </html>
